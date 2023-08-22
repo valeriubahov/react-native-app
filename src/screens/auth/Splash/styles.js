@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     height: '100%',
-    backgroundColor: colors.white,
   },
   image: {
     width: '100%',

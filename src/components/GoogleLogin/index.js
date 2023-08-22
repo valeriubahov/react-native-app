@@ -8,8 +8,6 @@ import {
 
 const GoogleLogin = () => {
   const handleGoogleLogin = async () => {
-    console.log('Logging with google');
-
     try {
       await GoogleSignin.hasPlayServices();
       await GoogleSignin.signIn();
