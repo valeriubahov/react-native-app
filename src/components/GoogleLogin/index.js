@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, Text, TouchableOpacity} from 'react-native';
+import {Image, TouchableOpacity} from 'react-native';
 import {styles} from './styles';
 import {
   GoogleSignin,
@@ -12,25 +12,22 @@ const GoogleLogin = () => {
 
     try {
       await GoogleSignin.hasPlayServices();
-      const userInfo = await GoogleSignin.signIn();
-      console.log('UserInfo => :', userInfo);
-      // this.setState({userInfo});
+      await GoogleSignin.signIn();
     } catch (error) {
-      console.log(error);
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        console.log('Error cancelled');
+        console.log('Error: SIGN_IN_CANCELLED', error);
 
         // user cancelled the login flow
       } else if (error.code === statusCodes.IN_PROGRESS) {
-        console.log('Error in progress');
+        console.log('Error: IN_PROGRESS', error);
 
         // operation (e.g. sign in) is in progress already
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
         // play services not available or outdated
-        console.log('Error service not available');
+        console.log('Error: PLAY_SERVICES_NOT_AVAILABLE', error);
       } else {
         // some other error happened
-        console.log('Error something else');
+        console.log('UNEXPECTED ERROR:', error);
       }
     }
   };
