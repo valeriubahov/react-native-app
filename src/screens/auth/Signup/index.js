@@ -7,6 +7,7 @@ import Checkbox from '../../../components/Checkbox';
 import Button from '../../../components/Button';
 import Separator from '../../../components/Separator';
 import GoogleLogin from '../../../components/GoogleLogin';
+
 const Signup = () => {
   const [checked, setChecked] = useState(false);
 

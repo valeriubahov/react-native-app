@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {styles} from './styles';
 import AuthHeader from '../../../components/AuthHeader';
-import {ScrollView, Text, View} from 'react-native';
+import {ScrollView, Text} from 'react-native';
 import Input from '../../../components/Input';
-import Checkbox from '../../../components/Checkbox';
 import Button from '../../../components/Button';
 import Separator from '../../../components/Separator';
 import GoogleLogin from '../../../components/GoogleLogin';
+
 const Signin = () => {
   const onSignUp = () => {};
 
