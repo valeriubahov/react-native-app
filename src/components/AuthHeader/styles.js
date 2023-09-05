@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
   title: {
     color: colors.blue,
     fontSize: 26,
-    paddingHorizontal: 16,
     fontWeight: '500',
+    paddingHorizontal: 16,
   },
 });
