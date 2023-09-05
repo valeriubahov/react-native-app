@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, View} from 'react-native';
+import {FlatList, ScrollView, View} from 'react-native';
 import {styles} from './styles';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Header from '../../../components/Header';
@@ -53,32 +53,31 @@ const Home = () => {
   };
 
   return (
-    <SafeAreaView>
-      {/* <ScrollView style={styles.container}> */}
+    <SafeAreaView style={{flex: 1}}>
       <Header
         showSearch
         onSearch={setKeyword}
         keyword={keyword}
         title="Find All You Need"
       />
-
-      <FlatList
-        showsHorizontalScrollIndicator={false}
-        horizontal
-        style={styles.list}
-        data={categories}
-        renderItem={renderCategoryItem}
-        keyExtractor={(item, index) => String(index)}
-      />
-      <FlatList
-        style={styles.productsList}
-        numColumns={2}
-        data={filteredProducts}
-        renderItem={renderProductItem}
-        keyExtractor={item => String(item.id)}
-        ListFooterComponent={<View style={{height: 200}} />}
-      />
-      {/* </ScrollView> */}
+      <View style={styles.container}>
+        <FlatList
+          showsHorizontalScrollIndicator={false}
+          horizontal
+          style={styles.list}
+          data={categories}
+          renderItem={renderCategoryItem}
+          keyExtractor={(item, index) => String(index)}
+        />
+        <FlatList
+          style={styles.productsList}
+          numColumns={2}
+          data={filteredProducts}
+          renderItem={renderProductItem}
+          keyExtractor={item => String(item.id)}
+          ListFooterComponent={<View style={{height: 300}} />}
+        />
+      </View>
     </SafeAreaView>
   );
 };
