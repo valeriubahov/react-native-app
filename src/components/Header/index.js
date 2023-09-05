@@ -9,6 +9,8 @@ const Header = ({
   showLogout,
   showSearch,
   showBack,
+  keyword,
+  onSearch,
 }) => {
   const [showSearchInput, setShowSearchInput] = useState(false);
 
@@ -16,7 +18,7 @@ const Header = ({
     setShowSearchInput(state => !state);
   };
   return (
-    <View>
+    <View style={styles.mainContainer}>
       <View style={styles.container}>
         {showBack ? (
           <Pressable hitSlop={20} onPress={onBackPress}>
@@ -50,7 +52,13 @@ const Header = ({
         )}
       </View>
 
-      {showSearchInput ? <Input placeholder="Search..." /> : null}
+      {showSearchInput ? (
+        <Input
+          onChangeText={onSearch}
+          value={keyword}
+          placeholder="Search..."
+        />
+      ) : null}
     </View>
   );
 };
