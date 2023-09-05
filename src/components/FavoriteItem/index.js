@@ -10,6 +10,8 @@ const FavoriteItem = ({title, price, image, onPress}) => {
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.price}>{price}</Text>
       </View>
+
+      <Image source={require('../../assets/remove.png')} style={styles.icon} />
     </Pressable>
   );
 };

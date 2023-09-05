@@ -22,6 +22,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {colors} from './src/utils/colors';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Image} from 'react-native';
+import ProductDetails from './src/screens/app/ProductDetails';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -92,11 +93,19 @@ const App = () => {
       <NavigationContainer theme={theme}>
         <Stack.Navigator>
           {isSignedIn ? (
-            <Stack.Screen
-              name="Tabs"
-              component={Tabs}
-              options={{headerShown: false}}
-            />
+            <>
+              <Stack.Screen
+                name="Tabs"
+                component={Tabs}
+                options={{headerShown: false}}
+              />
+
+              <Stack.Screen
+                name="ProductDetails"
+                component={ProductDetails}
+                options={{headerShown: false}}
+              />
+            </>
           ) : (
             <>
               <Stack.Screen

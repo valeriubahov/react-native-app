@@ -4,6 +4,7 @@ import {styles} from './styles';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {products} from '../../../data/products';
 import FavoriteItem from '../../../components/FavoriteItem';
+import Header from '../../../components/Header';
 
 const Favorites = () => {
   const renderItem = ({item}) => {
@@ -11,13 +12,12 @@ const Favorites = () => {
   };
   return (
     <SafeAreaView>
-      <View style={styles.container}>
-        <FlatList
-          data={products}
-          renderItem={renderItem}
-          keyExtractor={item => String(item?.id)}
-        />
-      </View>
+      <Header title="Favorites" />
+      <FlatList
+        data={products}
+        renderItem={renderItem}
+        keyExtractor={item => String(item?.id)}
+      />
     </SafeAreaView>
   );
 };

@@ -1,12 +1,13 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {colors} from '../../utils/colors';
-
-const {width} = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
   container: {
-    margin: 8,
+    marginHorizontal: 24,
+    paddingVertical: 16,
     flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderBlockColor: colors.borderColor,
   },
   title: {
     color: colors.textGrey,
@@ -22,5 +23,12 @@ export const styles = StyleSheet.create({
     color: colors.black,
     paddingBottom: 8,
   },
-  content: {},
+  icon: {
+    width: 24,
+    height: 24,
+    marginLeft: 8,
+  },
+  content: {
+    flex: 1,
+  },
 });
