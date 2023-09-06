@@ -1,22 +1,24 @@
 import React, {useState} from 'react';
-import {Pressable, Text, Image, View} from 'react-native';
-import {styles} from './styles';
+import {Pressable, Text, View, Image} from 'react-native';
 import Input from '../Input';
+import {styles} from './styles';
+
 const Header = ({
   title,
   onBackPress,
   onLogout,
   showLogout,
   showSearch,
-  showBack,
-  keyword,
   onSearch,
+  keyword,
+  showBack,
 }) => {
   const [showSearchInput, setShowSearchInput] = useState(false);
 
   const onSearchClick = () => {
-    setShowSearchInput(state => !state);
+    setShowSearchInput(s => !s);
   };
+
   return (
     <View style={styles.mainContainer}>
       <View style={styles.container}>
@@ -56,7 +58,7 @@ const Header = ({
         <Input
           onChangeText={onSearch}
           value={keyword}
-          placeholder="Search..."
+          placeholder="Type your keyword..."
         />
       ) : null}
     </View>

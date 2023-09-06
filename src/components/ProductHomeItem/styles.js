@@ -5,7 +5,7 @@ const {width} = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
   container: {
-    padding: 8,
+    margin: 8,
   },
   title: {
     color: colors.textGrey,
