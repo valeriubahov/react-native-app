@@ -24,6 +24,8 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Image} from 'react-native';
 import ProductDetails from './src/screens/app/ProductDetails';
 import Settings from './src/screens/app/Settings';
+import CreateListing from './src/screens/app/CreateListing';
+import MyListings from './src/screens/app/MyListings';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -39,6 +41,16 @@ const ProfileStack = () => {
       <Stack.Screen
         name="Settings"
         component={Settings}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="CreateListing"
+        component={CreateListing}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MyListings"
+        component={MyListings}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
