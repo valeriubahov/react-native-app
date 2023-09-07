@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 16,
     flexDirection: 'row',
     borderBottomWidth: 1,
-    borderBlockColor: colors.borderColor,
+    borderBottomColor: colors.borderColor,
   },
   title: {
     color: colors.textGrey,

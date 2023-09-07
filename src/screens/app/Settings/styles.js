@@ -16,4 +16,16 @@ export const styles = StyleSheet.create({
     color: colors.grey,
     marginBottom: 16,
   },
+  sectionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  icon: {
+    width: 24,
+    height: 24,
+  },
+  button: {
+    paddingVertical: 12,
+    marginTop: 16,
+  },
 });
