@@ -100,7 +100,7 @@ const Tabs = () => (
 );
 
 const App = () => {
-  const isSignedIn = true;
+  const isSignedIn = false;
 
   useEffect(() => {
     GoogleSignin.configure({
