@@ -16,9 +16,13 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Routes from './Routes';
 
 export const UserContext = createContext();
+export const ProfileContext = createContext();
+export const ServiceContext = createContext([]);
 
 const App = () => {
   const [user, setUser] = useState();
+  const [profile, setProfile] = useState();
+  const [services, setServices] = useState();
 
   useEffect(() => {
     GoogleSignin.configure({
@@ -33,7 +37,11 @@ const App = () => {
   return (
     <SafeAreaProvider>
       <UserContext.Provider value={{user, setUser}}>
-        <Routes />
+        <ProfileContext.Provider value={{profile, setProfile}}>
+          <ServiceContext.Provider value={{services, setServices}}>
+            <Routes />
+          </ServiceContext.Provider>
+        </ProfileContext.Provider>
       </UserContext.Provider>
     </SafeAreaProvider>
   );

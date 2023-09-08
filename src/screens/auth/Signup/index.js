@@ -58,10 +58,8 @@ const Signup = ({navigation}) => {
       const token = await signup(values);
 
       setUser({token});
-
-      console.log(token);
     } catch (err) {
-      console.log('error', err);
+      console.log('Error :>>', err);
     }
   };
 
