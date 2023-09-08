@@ -8,3 +8,7 @@ export const request = ({url, method, data}) => {
     data,
   });
 };
+
+export const addTokenToAxios = token => {
+  axios.defaults.headers.Authorization = token;
+};

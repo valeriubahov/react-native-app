@@ -36,3 +36,18 @@ export const login = async values => {
     console.log('Error :>> ', e);
   }
 };
+
+export const getProfile = async () => {
+  try {
+    const response = await request({
+      url: '/user/profile',
+      method: 'GET',
+    });
+
+    if (response) {
+      return response?.data;
+    }
+  } catch (e) {
+    console.log('Error :>> ', e);
+  }
+};
