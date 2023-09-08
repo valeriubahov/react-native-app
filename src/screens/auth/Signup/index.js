@@ -15,7 +15,7 @@ import {UserContext} from '../../../../App';
 const Signup = ({navigation}) => {
   const [checked, setChecked] = useState(false);
   const [values, setValues] = useState({});
-  const {user, setUser} = useContext(UserContext);
+  const {setUser} = useContext(UserContext);
 
   const onCheck = () => {
     setChecked(!checked);

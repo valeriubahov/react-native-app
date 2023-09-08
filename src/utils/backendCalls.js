@@ -1,4 +1,5 @@
 import {request} from './request';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const signup = async values => {
   try {
@@ -27,6 +28,8 @@ export const login = async values => {
     });
 
     if (response?.data?.token) {
+      await AsyncStorage.setItem('auth_token', response?.data?.token);
+
       return response?.data?.token;
     }
   } catch (e) {
