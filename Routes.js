@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import Splash from './src/screens/auth/Splash';
 import Signup from './src/screens/auth/Signup';
 import Home from './src/screens/app/Home';
@@ -24,6 +24,7 @@ import Settings from './src/screens/app/Settings';
 import CreateListing from './src/screens/app/CreateListing';
 import MyListings from './src/screens/app/MyListings';
 import {UserContext} from './App';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -98,7 +99,16 @@ const Tabs = () => (
 );
 
 const Routes = () => {
-  const {user} = useContext(UserContext);
+  const {user, setUser} = useContext(UserContext);
+
+  useEffect(() => {
+    (async () => {
+      const token = await AsyncStorage.getItem('auth_token');
+      if (token) {
+        setUser({token});
+      }
+    })();
+  }, [setUser]);
 
   const theme = {
     colors: {
