@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 14,
     color: colors.blue,
-    marginBottom: 4,
+    marginBottom: 16,
   },
   image: {
     width: 100,
@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 8,
-    marginTop: 28,
+    marginTop: 8,
   },
   uploadCircle: {
     width: 32,
@@ -49,21 +49,22 @@ export const styles = StyleSheet.create({
     flexWrap: 'wrap',
     paddingBottom: 16,
   },
-  imageContainer: {
+  imageCont: {
     flexDirection: 'row',
+    marginTop: 8,
     marginRight: 8,
-    marginTop: 28,
   },
   delete: {
     width: 24,
     height: 24,
-    marginLeft: -14,
-    marginTop: -24,
+    marginLeft: -16,
+    marginTop: -10,
   },
   textarea: {
     minHeight: 150,
+    paddingTop: 16,
   },
   button: {
-    marginBottom: 180,
+    marginBottom: 160,
   },
 });

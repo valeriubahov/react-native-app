@@ -111,12 +111,6 @@ const Routes = () => {
     })();
   }, [setUser]);
 
-  useEffect(() => {
-    if (user?.token) {
-      addTokenToAxios(user?.token);
-    }
-  }, [user]);
-
   const theme = {
     colors: {
       background: colors.white,

@@ -17,10 +17,12 @@ import Routes from './Routes';
 
 export const UserContext = createContext();
 export const ProfileContext = createContext();
+export const ServiceContext = createContext([]);
 
 const App = () => {
   const [user, setUser] = useState();
   const [profile, setProfile] = useState();
+  const [services, setServices] = useState();
 
   useEffect(() => {
     GoogleSignin.configure({
@@ -36,7 +38,9 @@ const App = () => {
     <SafeAreaProvider>
       <UserContext.Provider value={{user, setUser}}>
         <ProfileContext.Provider value={{profile, setProfile}}>
-          <Routes />
+          <ServiceContext.Provider value={{services, setServices}}>
+            <Routes />
+          </ServiceContext.Provider>
         </ProfileContext.Provider>
       </UserContext.Provider>
     </SafeAreaProvider>

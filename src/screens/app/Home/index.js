@@ -1,40 +1,56 @@
-import React, {useEffect, useState} from 'react';
-import {FlatList, ScrollView, View} from 'react-native';
+import React, {useContext, useEffect, useState} from 'react';
+import {FlatList, View} from 'react-native';
 import {styles} from './styles';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Header from '../../../components/Header';
 import {categories} from '../../../data/categories';
-import {products} from '../../../data/products';
 import CategoryBox from '../../../components/CategoryBox';
 import ProductHomeItem from '../../../components/ProductHomeItem';
+import {getServices} from '../../../utils/backendCalls';
+import {ServiceContext, UserContext} from '../../../../App';
+import axios from 'axios';
+import {addTokenToAxios} from '../../../utils/request';
 
 const Home = ({navigation}) => {
   const [selectedCategory, setSelectedCategory] = useState();
   const [keyword, setKeyword] = useState();
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  const {services, setServices} = useContext(ServiceContext);
+  const {user} = useContext(UserContext);
+  const [filteredProducts, setFilteredProducts] = useState(services);
+
+  useEffect(() => {
+    (async () => {
+      if (!axios.defaults.headers.Authorization) {
+        addTokenToAxios(user?.token);
+      }
+
+      const data = await getServices();
+      setServices(data);
+    })();
+  }, [setServices, user]);
 
   useEffect(() => {
     if (selectedCategory && !keyword) {
-      const updatedProducts = products.filter(
-        x => x.category === selectedCategory,
+      const updatedProducts = services.filter(
+        x => String(x.category) === String(selectedCategory),
       );
       setFilteredProducts(updatedProducts);
     } else if (selectedCategory && keyword) {
-      const updatedProducts = products.filter(
+      const updatedProducts = services.filter(
         x =>
-          x.category === selectedCategory &&
+          String(x.category) === String(selectedCategory) &&
           x.title.toLowerCase().includes(keyword.toLowerCase()),
       );
       setFilteredProducts(updatedProducts);
     } else if (!selectedCategory && keyword) {
-      const updatedProducts = products.filter(x =>
+      const updatedProducts = services.filter(x =>
         x.title.toLowerCase().includes(keyword.toLowerCase()),
       );
       setFilteredProducts(updatedProducts);
     } else if (!selectedCategory && !keyword) {
-      setFilteredProducts(products);
+      setFilteredProducts(services);
     }
-  }, [selectedCategory, keyword]);
+  }, [selectedCategory, keyword, services]);
 
   const renderCategoryItem = ({item, index}) => {
     return (
@@ -77,7 +93,7 @@ const Home = ({navigation}) => {
           numColumns={2}
           data={filteredProducts}
           renderItem={renderProductItem}
-          keyExtractor={item => String(item.id)}
+          keyExtractor={item => String(item._id)}
           ListFooterComponent={<View style={{height: 300}} />}
         />
       </View>

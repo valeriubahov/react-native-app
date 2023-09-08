@@ -19,7 +19,7 @@ export const signup = async values => {
       return login({email, password});
     }
   } catch (e) {
-    console.log('Error :>> ', e);
+    console.log('Error signup :>> ', e);
   }
 };
 
@@ -42,7 +42,7 @@ export const login = async values => {
       return response?.data?.token;
     }
   } catch (e) {
-    console.log('Error :>> ', e);
+    console.log('Error login :>> ', e);
   }
 };
 
@@ -61,7 +61,7 @@ export const getProfile = async () => {
       return response?.data;
     }
   } catch (e) {
-    console.log('Error :>> ', e);
+    console.log('Error getProfile :>> ', e);
   }
 };
 
@@ -82,6 +82,92 @@ export const updateProfile = async data => {
       return getProfile();
     }
   } catch (e) {
-    console.log('Error :>> ', e);
+    console.log('Error updateProfile :>> ', e);
+  }
+};
+
+/**
+ * Get services
+ * @returns profile
+ */
+export const getServices = async () => {
+  try {
+    const response = await request({
+      url: '/services',
+      method: 'GET',
+    });
+
+    if (response) {
+      return response?.data;
+    }
+  } catch (e) {
+    console.log('Error getServices :>> ', e);
+  }
+};
+
+export const updateService = async (id, data) => {
+  try {
+    const response = await request({
+      url: '/services',
+      method: 'PATCH',
+      data: {
+        servicesId: id,
+        ...data,
+      },
+    });
+
+    if (response) {
+      const services = await getServices();
+      return services;
+    }
+  } catch (e) {
+    console.log('Erro getServices :>> ', e);
+  }
+};
+
+export const addService = async data => {
+  try {
+    console.log('data', data.image);
+    const formData = new FormData();
+    const objKeys = Object.keys(data);
+    objKeys.forEach(key => {
+      formData.append(key, data[key]);
+    });
+    console.log('formData', formData);
+    const response = await request({
+      url: '/services',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+      data: formData,
+    });
+    console.log(response);
+
+    if (response) {
+      const services = await getServices();
+      return services;
+    }
+  } catch (e) {
+    console.log('e add services :>> ', e);
+  }
+};
+
+export const deleteService = async id => {
+  try {
+    const response = await request({
+      url: '/services',
+      method: 'DELETE',
+      data: {
+        servicesId: id,
+      },
+    });
+
+    if (response) {
+      const services = await getServices();
+      return services;
+    }
+  } catch (e) {
+    console.log('Erro getServices :>> ', e);
   }
 };
